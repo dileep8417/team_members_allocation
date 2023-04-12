@@ -1,0 +1,8 @@
+.selected {
+    border-color: green;
+    box-shadow: 4px 4px green;
+}
+
+.filter {
+   cursor: pointer;
+}
