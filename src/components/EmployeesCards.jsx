@@ -21,7 +21,7 @@ const EmployeesCards = ({employees, setEmployees, selectedTeam, cardClickHandler
     return (
         <div className="container-fluid" id="employees_cards">
             <div className="row justify-content-center">
-                { employees.map((employee, index) => {
+                { employees.map((employee) => {
                     return <EmployeeCard employee={employee} selectedTeam={selectedTeam} cardClickHandler={cardClickHandler} />;
                 }) }
             </div>

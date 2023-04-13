@@ -87,7 +87,7 @@ const App = () => {
           <Employees employees={employees} setEmployees={setEmployees} selectedTeam={selectedTeam} setSelectedTeam={setSelectedTeam} />
         } />
 
-        <Route path = "/teams" element={<TeamGroups />} />
+        <Route path = "/teams" element={<TeamGroups employees={employees} />} />
       </Routes>
     </BrowserRouter>
   );
