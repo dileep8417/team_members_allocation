@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TeamStyles from '../styles/TeamDetails.module.css';
+import TeamStyles from '../styles/TeamSelection.module.css';
 
 const TeamGroups = ({ employees }) => {
 
@@ -9,8 +9,9 @@ const TeamGroups = ({ employees }) => {
         let groupedEmployees = {};
 
         employees.forEach((employee) => {
-            groupedEmployees[employee.team] = groupedEmployees[employee.team] ? [...groupedEmployees[employee.team], employee] : [employee];
-            groupedEmployees[employee.team]['collapsed'] = true;
+            let teamName = employee.team || 'Unassigned Employees';
+            groupedEmployees[teamName] = groupedEmployees[teamName] ? [...groupedEmployees[teamName], employee] : [employee];
+            groupedEmployees[teamName]['collapsed'] = true;
         });
 
         return groupedEmployees;

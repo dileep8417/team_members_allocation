@@ -1,4 +1,4 @@
-const TeamDetails = ({employees, selectedTeam, setSelectedTeam}) => {
+const TeamSelection = ({employees, selectedTeam, setSelectedTeam}) => {
     const teams = ['Engineering', 'Product Management'];
 
     function selectTeamHandler(e) {
@@ -32,4 +32,4 @@ const TeamDetails = ({employees, selectedTeam, setSelectedTeam}) => {
     );
 }
 
-export default TeamDetails;
+export default TeamSelection;
