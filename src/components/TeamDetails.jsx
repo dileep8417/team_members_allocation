@@ -20,7 +20,7 @@ const TeamDetails = ({employees, selectedTeam, setSelectedTeam}) => {
                             {selectedTeam ? ( <h6>{ getSelectedTeamEmployesCount() } employees are in {selectedTeam}</h6> ) : ( <h6>{employees.length} employees are in the Organisation</h6> ) }
                         </span>
                         <select className="form-select mt-2" name="teams" id="teams" value={selectedTeam} onChange={selectTeamHandler}>
-                            <option value="">Select the team</option>
+                            <option value="">All team members</option>
                             { teams.map((team, index) => {
                                 return ( <option value={team} key={index}>{team}</option> )
                             }) }

@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Employees from "./components/Employees";
-import TeamDetails from './components/TeamDetails';
-
+import Navbar from "./components/Navbar";
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
+import TeamGroups from "./components/TeamGroups";
 
 const App = () => {
 
   const [employees, setEmployees] = useState(
+    JSON.parse(localStorage.getItem('employees')) ||
     [
         { 
             'id': '987',
@@ -67,13 +69,27 @@ const App = () => {
     ]
   );
 
-  const [selectedTeam, setSelectedTeam] = useState("");
+  const [selectedTeam, setSelectedTeam] = useState(localStorage.getItem('selectedTeam') || '');
+
+  useEffect(() => {
+    localStorage.setItem('employees', JSON.stringify(employees));
+  }, [employees]);
+
+  useEffect(() => {
+    localStorage.setItem('selectedTeam', selectedTeam);
+  }, [selectedTeam]);
 
   return (
-    <div>
-      <TeamDetails employees={employees} selectedTeam={selectedTeam} setSelectedTeam={setSelectedTeam} />
-      <Employees employees={employees} setEmployees={setEmployees} selectedTeam={selectedTeam}/>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={
+          <Employees employees={employees} setEmployees={setEmployees} selectedTeam={selectedTeam} setSelectedTeam={setSelectedTeam} />
+        } />
+
+        <Route path = "/teams" element={<TeamGroups />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
