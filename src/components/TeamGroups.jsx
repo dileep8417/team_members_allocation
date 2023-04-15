@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import TeamStyles from '../styles/TeamSelection.module.css';
-import AppContext from "../context";
+import { useAppContext } from "../context";
 
 const TeamGroups = () => {
-    const { employees, selectedTeam } = useContext(AppContext);
+    const { employees, selectedTeam } = useAppContext();
     const [employeeGroups, setEmployeeGroups] = useState(getEmployeesGroup()); 
 
     function getEmployeesGroup() {

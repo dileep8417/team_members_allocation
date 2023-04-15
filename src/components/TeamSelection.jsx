@@ -1,10 +1,9 @@
-import AppContext from "../context";
-import { useContext } from "react";
+import { useAppContext } from "../context";
 
 const TeamSelection = () => {
     const teams = ['Engineering', 'Product Management'];
 
-    const {employees, selectedTeam, setSelectedTeam} = useContext(AppContext);
+    const {employees, selectedTeam, setSelectedTeam} = useAppContext();
 
     function selectTeamHandler(e) {
         setSelectedTeam(e.target.value);

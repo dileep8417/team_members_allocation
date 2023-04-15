@@ -1,12 +1,11 @@
 import CardStyle from "../styles/Employees.module.css";
 import MaleProfile from "../assets/male.jpg";
 import FemleProfile from "../assets/female.jpg";
-import { useContext } from "react";
-import AppContext from "../context";
+import { useAppContext } from "../context";
 
 const EmployeeCard = ({employee, cardClickHandler}) => {
 
-    const {selectedTeam} = useContext(AppContext);
+    const {selectedTeam} = useAppContext();
 
     return (
         <div className={ (employee.team === selectedTeam ? CardStyle.selected : '') + (selectedTeam && ' ' + CardStyle.filter) + " card col-md-4 col-lg-3 m-3"} 

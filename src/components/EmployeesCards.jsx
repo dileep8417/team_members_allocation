@@ -1,10 +1,9 @@
 import EmployeeCard from "./EmployeeCard";
-import {useContext} from 'react';
-import AppContext from "../context";
+import { useAppContext } from "../context";
 
 const EmployeesCards = () => {
 
-    const {employees, setEmployees, selectedTeam} = useContext(AppContext);
+    const {employees, setEmployees, selectedTeam} = useAppContext();
 
     function cardClickHandler(employeeId) {
         if (!selectedTeam) {
