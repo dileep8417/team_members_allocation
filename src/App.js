@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import TeamGroups from "./components/TeamGroups";
+import AppContext from "./context";
 
 const App = () => {
 
@@ -80,16 +81,16 @@ const App = () => {
   }, [selectedTeam]);
 
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={
-          <Employees employees={employees} setEmployees={setEmployees} selectedTeam={selectedTeam} setSelectedTeam={setSelectedTeam} />
-        } />
+    <AppContext.Provider value={{employees, setEmployees, selectedTeam, setSelectedTeam}}>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Employees />} />
 
-        <Route path = "/teams" element={<TeamGroups employees={employees} />} />
-      </Routes>
-    </BrowserRouter>
+          <Route path = "/teams" element={<TeamGroups />} />
+        </Routes>
+      </BrowserRouter>
+    </AppContext.Provider>
   );
 }
 

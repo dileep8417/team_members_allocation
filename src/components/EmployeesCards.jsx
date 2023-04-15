@@ -1,6 +1,10 @@
 import EmployeeCard from "./EmployeeCard";
+import {useContext} from 'react';
+import AppContext from "../context";
 
-const EmployeesCards = ({employees, setEmployees, selectedTeam, cardClickHandler}) => {
+const EmployeesCards = () => {
+
+    const {employees, setEmployees, selectedTeam} = useContext(AppContext);
 
     function cardClickHandler(employeeId) {
         if (!selectedTeam) {
@@ -17,12 +21,12 @@ const EmployeesCards = ({employees, setEmployees, selectedTeam, cardClickHandler
             return employee;
         }));
     }
-
+    
     return (
         <div className="container-fluid" id="employees_cards">
             <div className="row justify-content-center">
-                { employees.map((employee) => {
-                    return <EmployeeCard employee={employee} selectedTeam={selectedTeam} cardClickHandler={cardClickHandler} />;
+                { employees.map((employee, index) => {
+                    return <EmployeeCard key={index} employee={employee} cardClickHandler={cardClickHandler} />;
                 }) }
             </div>
         </div>

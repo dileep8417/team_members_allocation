@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import TeamStyles from '../styles/TeamSelection.module.css';
+import AppContext from "../context";
 
-const TeamGroups = ({ employees }) => {
-
+const TeamGroups = () => {
+    const { employees, selectedTeam } = useContext(AppContext);
     const [employeeGroups, setEmployeeGroups] = useState(getEmployeesGroup()); 
 
     function getEmployeesGroup() {
@@ -11,7 +12,7 @@ const TeamGroups = ({ employees }) => {
         employees.forEach((employee) => {
             let teamName = employee.team || 'Unassigned Employees';
             groupedEmployees[teamName] = groupedEmployees[teamName] ? [...groupedEmployees[teamName], employee] : [employee];
-            groupedEmployees[teamName]['collapsed'] = true;
+            groupedEmployees[teamName]['collapsed'] = selectedTeam !== teamName;
         });
 
         return groupedEmployees;
