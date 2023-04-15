@@ -85,9 +85,9 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Employees />} />
+          <Route path="/team_members_allocation" element={<Employees />} />
 
-          <Route path = "/teams" element={<TeamGroups />} />
+          <Route path ="/team_members_allocation/teams" element={<TeamGroups />} />
         </Routes>
       </BrowserRouter>
     </AppContext.Provider>
